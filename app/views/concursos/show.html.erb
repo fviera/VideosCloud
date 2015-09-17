@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @concurso.nombre %>
+</p>
+
+<p>
+  <strong>Banner:</strong>
+  <%= @concurso.banner %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @concurso.url %>
+</p>
+
+<p>
+  <strong>Fechaini:</strong>
+  <%= @concurso.fechaini %>
+</p>
+
+<p>
+  <strong>Fechafin:</strong>
+  <%= @concurso.fechafin %>
+</p>
+
+<p>
+  <strong>Premio:</strong>
+  <%= @concurso.premio %>
+</p>
+
+<%= link_to 'Edit', edit_concurso_path(@concurso) %> |
+<%= link_to 'Back', concursos_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyText
+  banner: MyText
+  url: MyText
+  fechaini: MyText
+  fechafin: MyText
+  premio: MyText
+
+two:
+  nombre: MyText
+  banner: MyText
+  url: MyText
+  fechaini: MyText
+  fechafin: MyText
+  premio: MyText
