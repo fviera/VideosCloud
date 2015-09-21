@@ -1,0 +1,62 @@
+<%= jwplayer_assets %>
+<div class="jumbotron">
+    <table>
+      <tr>
+        <td>
+    <a class="navbar-brand" href="<%= @concurso.url %>">
+      <img alt="Brand" src="<%= @concurso.banner %>">
+    </a>
+        </td>
+      <td>
+        <h3>Concurso <strong><%= @concurso.nombre %></strong></h3>
+      </td>
+      </tr>
+      <tr>
+      </tr>
+    </table>
+  <p>
+  <table>
+    <tr>
+      <td>  <a class="btn btn-primary btn-lg" href="/videos/new/<%= @concurso.id %>" role="button">Sube tu video</a></td>
+      <td> Antes del <strong> <%= @concurso.fechafin %> </strong> y ten la oportunidad de ganar un <strong><%= @concurso.premio %></strong> </td>
+    </tr>
+  </table>
+
+</div>
+
+<p id="notice"><%= notice %></p>
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Video</th>
+    <th>Participante</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <% @videosOrder = @concurso.videos.where("estado = 'CONVERTIDO'") %>
+  <% if @videosOrder  %>
+  <%    @videosOrder = @videosOrder.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)%>
+  <%    @videosOrder.each do |video| %>
+      <tr>
+        <td>
+          <div id='jwplayer<%=video.id%>'>This div will be replaced by the JW Player.</div>
+          <script type='text/javascript'>
+              jwplayer('jwplayer<%=video.id%>').setup({"flashplayer":"/assets/player.swf","width":500,"height":200,"file":"<%= video.archivoconvertido %>"});
+          </script>
+
+        </td>
+        <td><%= video.nombres + " " + video.apellidos  %><p>
+            <%= video.mensaje %>
+        </td>
+      </tr>
+  <%    end %>
+  </tbody>
+</table>
+
+  <%=   will_paginate @videosOrder.all, renderer: BootstrapPagination::Rails %>
+  <% end %>
+

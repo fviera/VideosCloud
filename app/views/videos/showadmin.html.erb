@@ -1,0 +1,44 @@
+<%= jwplayer_assets %>
+<h2>Video</h2>
+<p>
+  <strong>Nombres:</strong>
+  <%= @video.nombres %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @video.apellidos %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @video.correo %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @video.fecha %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @video.estado %>
+</p>
+<%= link_to 'Ir Concurso', '/concursos/'+@video.concurso_id.to_s, class: 'btn btn-primary'%>
+<p>
+  <strong>Video original:</strong>
+  <div id='jwplayer1'>This div will be replaced by the JW Player.</div>
+  <script type='text/javascript'>
+    jwplayer('jwplayer1').setup({"flashplayer":"/assets/player.swf","width":500,"height":200,"file":"<%= @video.archivo %>"});
+  </script>
+</p>
+
+<% if @video.archivoconvertido %>
+<p>
+  <strong>Video convertido:</strong>
+  <div id='jwplayer2'>This div will be replaced by the JW Player.</div>
+  <script type='text/javascript'>
+    jwplayer('jwplayer2').setup({"flashplayer":"/assets/player.swf","width":500,"height":200,"file":"<%= @video.archivoconvertido %>"});
+  </script>
+</p>
+<% end %>

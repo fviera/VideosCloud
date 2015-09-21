@@ -1,0 +1,28 @@
+  <% if flash[:alert] %>
+      <p id="notice"><%= flash[:alert] %></p>
+  <% end %>
+  <%= form_tag('/sesion/create', method: :get) do %>
+        <legend>Ingreso</legend>
+
+        <div class="field form-group">
+          <%= label_tag :name, 'Usuario', class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+          <%= text_field_tag :name, params[:name] %>
+          </div>
+        </div>
+
+
+        <div class="field form-group">
+          <%= label_tag :password, 'Clave', class: 'col-sm-2 control-label' %>
+          <div class="col-sm-10">
+            <%= password_field_tag :password, params[:password] %>
+          </div>
+        </div>
+
+        <div class="actions form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <%= submit_tag "Ingresar", class: 'btn btn-primary' %>
+          </div>
+        </div>
+
+  <% end %>
