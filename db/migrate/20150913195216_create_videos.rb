@@ -6,8 +6,10 @@ class CreateVideos < ActiveRecord::Migration
       t.text :correo
       t.text :fecha
       t.text :estado
+      t.text :mensaje
       t.text :archivo
       t.text :archivoconvertido
+      t.text :mensaje
       t.datetime :fechainiconversion
       t.datetime :fechafinconversion
 

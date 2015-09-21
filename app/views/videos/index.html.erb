@@ -1,6 +1,7 @@
-<h1>Listing videos</h1>
+<div class="container">
+<h2>Listado de videos</h2>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Nombres</th>
@@ -20,14 +21,14 @@
         <td><%= video.correo %></td>
         <td><%= video.fecha %></td>
         <td><%= video.estado %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Edit', edit_video_path(video) %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', video %></td>
+        <td><%= link_to 'Editar', edit_video_path(video) %></td>
+        <td><%= link_to 'Eliminar', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <%= link_to 'New Video', new_video_path %>

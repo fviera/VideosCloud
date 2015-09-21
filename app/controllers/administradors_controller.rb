@@ -4,7 +4,7 @@
   # GET /administradors
   # GET /administradors.json
   def index
-    @administradors = Administrador.all
+    @administradors = Administrador.all.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /administradors/1
@@ -27,12 +27,18 @@
     @administrador = Administrador.new(administrador_params)
 
     respond_to do |format|
-      if @administrador.save
-        format.html { redirect_to @administrador, notice: 'Administrador was successfully created.' }
-        format.json { render :show, status: :created, location: @administrador }
-      else
+      if @administrador.password != @administrador.password_adicional
+        @administrador.errors.add :password, ("La comprobacion del password fallo")
         format.html { render :new }
         format.json { render json: @administrador.errors, status: :unprocessable_entity }
+      else
+        if @administrador.save
+          format.html { redirect_to @administrador, notice: 'Administrador ha sido creado correctamente.' }
+          format.json { render :show, status: :created, location: @administrador }
+        else
+          format.html { render :new }
+          format.json { render json: @administrador.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -42,7 +48,7 @@
   def update
     respond_to do |format|
       if @administrador.update(administrador_params)
-        format.html { redirect_to @administrador, notice: 'Administrador was successfully updated.' }
+        format.html { redirect_to @administrador, notice: 'Administrador ha sido actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @administrador }
       else
         format.html { render :edit }
@@ -56,7 +62,7 @@
   def destroy
     @administrador.destroy
     respond_to do |format|
-      format.html { redirect_to administradors_url, notice: 'Administrador was successfully destroyed.' }
+      format.html { redirect_to administradors_url, notice: 'Administrador ha sido eleminado correctamente.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +75,6 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def administrador_params
-      params.require(:administrador).permit(:nombres, :apellidos, :correo, :empresa, :usuario, :password)
+      params.require(:administrador).permit(:nombres, :apellidos, :correo, :empresa, :usuario, :password, :password_adicional)
     end
 end

@@ -1,3 +1,5 @@
+<h1>CONCURSO</h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -30,5 +32,42 @@
   <%= @concurso.premio %>
 </p>
 
-<%= link_to 'Edit', edit_concurso_path(@concurso) %> |
-<%= link_to 'Back', concursos_path %>
+<%= link_to 'Editar', edit_concurso_path(@concurso), class: 'btn btn-primary' %> |
+<%= link_to 'Ir Administrador', administrador_path(@concurso.administrador), class: 'btn btn-primary'%>
+
+<div class="container">
+  <h2>Listado de Videos</h2>
+
+  <table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Nombres</th>
+    <th>Apellidos</th>
+    <th>Correo</th>
+    <th>Fecha</th>
+    <th>Estado</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @vid = @concurso.videos.all.order("fecha DESC").paginate(:page => params[:page], :per_page => 2)%>
+  <% @vid.each do |video| %>
+      <tr>
+        <td><%= video.nombres %></td>
+        <td><%= video.apellidos %></td>
+        <td><%= video.correo %></td>
+        <td><%= video.fecha %></td>
+        <td><%= video.estado %></td>
+        <td><%= link_to 'Ver', '/videos/showadmin/'+video.id.to_s %></td>
+  <!-- No aplican esta funciones para el administrador
+        <td><--%= link_to 'Editar', edit_video_path(video) %></td>
+        <td><--%= link_to 'Eliminar', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    -->
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+
+<%= will_paginate @vid.all, renderer: BootstrapPagination::Rails %>

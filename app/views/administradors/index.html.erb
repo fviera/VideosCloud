@@ -1,6 +1,7 @@
-<h1>Listing administradors</h1>
+<div class="container">
+<h1>Lista administradores</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Nombres</th>
@@ -8,7 +9,6 @@
       <th>Correo</th>
       <th>Empresa</th>
       <th>Usuario</th>
-      <th>Password</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,15 +21,14 @@
         <td><%= administrador.correo %></td>
         <td><%= administrador.empresa %></td>
         <td><%= administrador.usuario %></td>
-        <td><%= administrador.password %></td>
-        <td><%= link_to 'Show', administrador %></td>
-        <td><%= link_to 'Edit', edit_administrador_path(administrador) %></td>
-        <td><%= link_to 'Destroy', administrador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <td width="40"><%= link_to 'Ver', administrador %></td>
+        <td width="50"><%= link_to 'Editar', edit_administrador_path(administrador) %></td>
+        <td width="50"><%= link_to 'Eliminar', administrador, method: :delete, data: { confirm: 'Esta seguro?' } %></td>    </tr>
     <% end %>
   </tbody>
 </table>
-
+  <%= will_paginate @administrador, renderer: BootstrapPagination::Rails %>
+</div>
 <br>
 
-<%= link_to 'New Administrador', new_administrador_path %>
+<%= link_to 'Nuevo Administrador', new_administrador_path, class: 'btn btn-primary'%>

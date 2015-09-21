@@ -1,4 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%= jwplayer_assets %>
+<div class="jumbotron">
+  <table>
+    <tr>
+      <td>
+        <a class="navbar-brand" href="<%= @concurso.url %>">
+          <img alt="Brand" src="<%= @concurso.banner %>">
+        </a>
+      </td>
+      <td>
+        <h3>Concurso <strong><%= @concurso.nombre %></strong></h3>
+      </td>
+    </tr>
+    <tr>
+    </tr>
+  </table>
+  <p>
+  <table>
+    <tr>
+      <td> <%= notice %> </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>  <a class="btn btn-primary btn-lg" href="/publicaciones/<%= @concurso.url %>" role="button">Regresa al concurso</a></td>
+    </tr>
+  </table>
+
+</div>
+
+
 
 <p>
   <strong>Nombres:</strong>
@@ -25,5 +55,20 @@
   <%= @video.estado %>
 </p>
 
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+<p>
+  <strong>Video original:</strong>
+  <div id='jwplayer1'>This div will be replaced by the JW Player.</div>
+  <script type='text/javascript'>
+    jwplayer('jwplayer1').setup({"flashplayer":"/assets/player.swf","width":500,"height":200,"file":"<%= @video.archivo %>"});
+  </script>
+</p>
+
+<% if @video.archivoconvertido %>
+<p>
+  <strong>Video convertido:</strong>
+  <div id='jwplayer2'>This div will be replaced by the JW Player.</div>
+  <script type='text/javascript'>
+    jwplayer('jwplayer2').setup({"flashplayer":"/assets/player.swf","width":500,"height":200,"file":"<%= @video.archivoconvertido %>"});
+  </script>
+</p>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913195216) do
+ActiveRecord::Schema.define(version: 20150920201112) do
 
   create_table "administradors", force: true do |t|
     t.text     "nombres"
@@ -28,12 +28,31 @@ ActiveRecord::Schema.define(version: 20150913195216) do
     t.text     "nombre"
     t.text     "banner"
     t.text     "url"
-    t.text     "fechaini"
-    t.text     "fechafin"
+    t.datetime "fechaini"
+    t.datetime "fechafin"
     t.text     "premio"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "administrador_id"
   end
+
+  add_index "concursos", ["administrador_id"], name: "index_concursos_on_administrador_id", using: :btree
+
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "videos", force: true do |t|
     t.text     "nombres"
@@ -47,6 +66,10 @@ ActiveRecord::Schema.define(version: 20150913195216) do
     t.datetime "fechafinconversion"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "concurso_id"
+    t.string   "mensaje"
   end
+
+  add_index "videos", ["concurso_id"], name: "index_videos_on_concurso_id", using: :btree
 
 end

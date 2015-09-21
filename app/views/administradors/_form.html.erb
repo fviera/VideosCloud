@@ -1,4 +1,6 @@
-<%= form_for(@administrador) do |f| %>
+
+
+<%= form_for(@administrador, html: {class: 'form-horizontal'}) do |f| %>
   <% if @administrador.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@administrador.errors.count, "error") %> prohibited this administrador from being saved:</h2>
@@ -11,31 +13,62 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nombres %><br>
-    <%= f.text_area :nombres %>
+  <div class="field form-group">
+    <%= f.label :nombres, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :nombres %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :apellidos %><br>
-    <%= f.text_area :apellidos %>
+
+  <div class="field form-group">
+    <%= f.label :apellidos, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :apellidos %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :correo %><br>
-    <%= f.text_area :correo %>
+
+
+  <div class="field form-group">
+    <%= f.label :correo, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :correo %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :empresa %><br>
-    <%= f.text_area :empresa %>
+
+  <div class="field form-group">
+   <%= f.label :empresa, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :empresa %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :usuario %><br>
-    <%= f.text_area :usuario %>
+
+
+  <div class="field form-group">
+    <%= f.label :usuario, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :usuario %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_area :password %>
+
+  <div class="field form-group">
+    <%= f.label :password, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.password_field :password %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+    <div class="field form-group">
+      <%= f.label "Confirmacion password", class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.password_field :password_adicional %>
+      </div>
+    </div>
+
+    <div class="actions form-group">
+      <div class="col-sm-offset-20 col-sm-10">
+        <%= f.submit "Crear Administrador", class: 'btn btn-primary' %>
+      </div>
+    </div>
+
+
 <% end %>

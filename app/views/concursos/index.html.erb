@@ -1,13 +1,13 @@
-<h1>Listing concursos</h1>
+<h1>LISTADO DE CONCURSOS</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Nombre</th>
       <th>Banner</th>
       <th>Url</th>
-      <th>Fechaini</th>
-      <th>Fechafin</th>
+      <th>Fecha Inicio</th>
+      <th>Fecha Fin</th>
       <th>Premio</th>
       <th colspan="3"></th>
     </tr>
@@ -22,14 +22,18 @@
         <td><%= concurso.fechaini %></td>
         <td><%= concurso.fechafin %></td>
         <td><%= concurso.premio %></td>
-        <td><%= link_to 'Show', concurso %></td>
-        <td><%= link_to 'Edit', edit_concurso_path(concurso) %></td>
-        <td><%= link_to 'Destroy', concurso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <!-- Se eliminan los link, dado que la navegacion debe venir desde el adminitardor
+        <td><--%= link_to 'Ver', concurso %></td>
+        <td><--%= link_to 'Editar', edit_concurso_path(concurso) %></td>
+        <td><--%= link_to 'Eliminar', concurso, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+       -->
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @concurso, renderer: BootstrapPagination::Rails %>
 <br>
-
-<%= link_to 'New Concurso', new_concurso_path %>
+<!-- Se eliminan los link, dado que la navegacion debe venir desde el adminitardor
+<--%= link_to 'Nuevo Concurso', new_concurso_path,class: 'btn btn-primary' %>
+-->
+<%= link_to 'Home','/home',class: 'btn btn-primary' %>

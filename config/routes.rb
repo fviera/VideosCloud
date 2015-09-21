@@ -1,9 +1,42 @@
 Rails.application.routes.draw do
+
+  get 'videos/showadmin/:id' => 'videos#showadmin'
+
+  get 'concursos/:id/destroy' => 'concursos#destroy'
+
+  get 'publicaciones/:nurl' => 'publicaciones#show'
+  get 'videos/new/:concurso_id' => 'videos#new'
+
+  get 'publicaciones/create'
+
+  get 'publicaciones/destroy'
+
+  get 'publicaciones/show'
+
+  get 'admin' => 'administradors#index'
+  controller :sesions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  get 'sesion/new'
+
+  get 'sesion/create'
+
+  get 'sesion/destroy'
+
   resources :videos
 
   resources :concursos
 
-  resources :administradors
+  resources :administradors do
+      resources :concursos do
+        resources :videos
+      end
+  end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
