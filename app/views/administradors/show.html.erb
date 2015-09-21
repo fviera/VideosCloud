@@ -60,7 +60,7 @@
   <tbody>
   <!--% @administrador.concursos.all.paginate(:page => params[:page], :per_page => 2).each do |concurso| %-->
 
-  <% @adm = @administrador.concursos.all.order("fechaini DESC").paginate(:page => params[:page], :per_page => 4)%>
+  <% @adm = @administrador.concursos.all.order("fechaini DESC").paginate(:page => params[:page], :per_page => 20)%>
 
   <% @adm.each do |concurso| %>
       <tr>

@@ -4,8 +4,7 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
-    @videos.order(:created_at)
+    @videos = Video.all.order('created_at desc').paginate(:page => params[:page], :per_page => 50)
   end
 
   # GET /videos/1
@@ -45,7 +44,8 @@ class VideosController < ApplicationController
       File.open(path, 'wb') { |f| f.write(upload_io.read()) }
 
 # transformar el campo archivo (que se empleo en el upload) como un text
-      params[:video][:archivo] = "/originales/" + numero_unico.to_s + "_" + upload_io.original_filename
+     params[:video][:archivo] = "/originales/" + numero_unico.to_s + "_" + upload_io.original_filename
+
     end
     @video = Video.new(video_params)
     @video.estado = "EN PROCESO"

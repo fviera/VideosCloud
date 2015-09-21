@@ -51,7 +51,7 @@
   </thead>
 
   <tbody>
-  <% @vid = @concurso.videos.all.order("fecha DESC").paginate(:page => params[:page], :per_page => 2)%>
+  <% @vid = @concurso.videos.all.order("fecha DESC").paginate(:page => params[:page], :per_page => 50)%>
   <% @vid.each do |video| %>
       <tr>
         <td><%= video.nombres %></td>

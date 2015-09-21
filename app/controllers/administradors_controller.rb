@@ -4,7 +4,7 @@
   # GET /administradors
   # GET /administradors.json
   def index
-    @administradors = Administrador.all.paginate(:page => params[:page], :per_page => 5)
+    @administradors = Administrador.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /administradors/1
