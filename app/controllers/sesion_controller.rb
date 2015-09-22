@@ -1,3 +1,9 @@
+# Controlador para crear login de los administradores
+# Fecha: 21/09/2015
+# Version: 0.9
+# Autores: Cristo Rodriguez / Fredy Viera
+#
+
 class SesionController < ApplicationController
   def new
   end

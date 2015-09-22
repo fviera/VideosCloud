@@ -1,3 +1,8 @@
+# Controlador de la entidad Concurso
+# Fecha: 21/09/2015
+# Version: 0.9
+# Autores: Cristo Rodriguez / Fredy Viera
+#
 class ConcursosController < ApplicationController
   before_action :set_concurso, only: [:show, :edit, :update, :destroy]
 

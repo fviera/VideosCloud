@@ -1,3 +1,8 @@
+# Controlador de la entidad Video
+# Fecha: 21/09/2015
+# Version: 0.9
+# Autores: Cristo Rodriguez / Fredy Viera
+#
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 

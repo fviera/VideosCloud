@@ -1,3 +1,8 @@
+# Controlador de la entidad Administrador
+# Fecha: 21/09/2015
+# Version: 0.9
+# Autores: Cristo Rodriguez / Fredy Viera
+#
   class AdministradorsController < ApplicationController
   before_action :set_administrador, only: [:show, :edit, :update, :destroy]
 

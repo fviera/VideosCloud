@@ -1,3 +1,8 @@
+# Controlador sobre la entidad Videos. Se emplea para visualizar los videos al publico
+# Fecha: 21/09/2015
+# Version: 0.9
+# Autores: Cristo Rodriguez / Fredy Viera
+#
 class PublicacionesController < ApplicationController
   before_action :set_concurso, only: [:show, :edit, :update, :destroy]
 
